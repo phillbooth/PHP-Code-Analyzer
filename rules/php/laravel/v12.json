@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "NoDuplicateLogic",
+        "description": "Update or create logic is duplicated between the controller and the command.",
+        "file_type": "php",
+        "pattern": "Conversion::updateOrCreate"
+    },
+    {
+        "id": "2",
+        "name": "UsePropertyPromotion",
+        "description": "Use constructor property promotion for a cleaner syntax.",
+        "file_type": "php",
+        "pattern": "public\\s+function\\s+__construct\\s*\\(([^)]+)\\s*\\)\\s*\\{([^}]+)\\\\$this->([^;]+);)"
+    },
+    {
+        "id": "3",
+        "name": "UnnecessaryResourceResponse",
+        "description": "Resource class response is redundant, it will already do this if you return the resource object.",
+        "file_type": "php",
+        "pattern": "->response\\(\\)->setStatusCode\\s*\\("
+    }
+]

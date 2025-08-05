@@ -1,0 +1,107 @@
+[
+    {
+        "id": "1",
+        "name": "NoParentConstructorCall",
+        "description": "Remove unnecessary parent::__construct() calls in Laravel controllers.",
+        "file_type": "php",
+        "pattern": "parent::__construct\\(\\);"
+    },
+    {
+        "id": "2",
+        "name": "UseTypeHints",
+        "description": "Ensure all function and method parameters have a type hint.",
+        "file_type": "php",
+        "pattern": "function\\s+([a-zA-Z0-9_]+)\\s*\\((?!\\s*\\))\\s*(\\$[a-zA-Z0-9_]+)\\s*\\)"
+    },
+    {
+        "id": "3",
+        "name": "NoShortOpenTags",
+        "description": "Avoid using PHP short open tags (<?). Use full tags (<?php) for compatibility.",
+        "file_type": "php",
+        "pattern": "<\\?(?!php|=)"
+    },
+    {
+        "id": "4",
+        "name": "NoGlobalVariables",
+        "description": "Avoid direct use of global variables. Prefer dependency injection or configuration.",
+        "file_type": "php",
+        "pattern": "\\b(?:\\$GLOBALS|global\\s+\\$[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*)"
+    },
+    {
+        "id": "5",
+        "name": "UseStrictComparison",
+        "description": "Prefer strict comparison (===, !==) over loose comparison (==, !=) to prevent type juggling issues.",
+        "file_type": "php",
+        "pattern": "(?<!!)==(?!=)|(?<!=)!=(?!=)"
+    },
+    {
+        "id": "6",
+        "name": "NoEmptyConstructor",
+        "description": "Avoid explicitly defining empty constructors. Remove them if no custom logic or dependency injection is needed.",
+        "file_type": "php",
+        "pattern": "public\\s+function\\s+__construct\\s*\\(\\)\\s*\\{\\s*\\}"
+    },
+    {
+        "id": "7",
+        "name": "NoErrorControlOperator",
+        "description": "Avoid using the error control operator (@). It can hide critical issues and make debugging difficult.",
+        "file_type": "php",
+        "pattern": "@\\s*\\$[a-zA-Z0-9_]+"
+    },
+    {
+        "id": "8",
+        "name": "NoChainedAssignments",
+        "description": "Avoid chained assignments (e.g., $a = $b = 0;) for improved readability and debugging clarity.",
+        "file_type": "php",
+        "pattern": "\\$[a-zA-Z0-9_]+\\s*=\\s*\\$[a-zA-Z0-9_]+\\s*="
+    },
+    {
+        "id": "9",
+        "name": "SimplifyBooleanReturn",
+        "description": "Simplify boolean return expressions like 'condition ? true : false' to just 'condition'.",
+        "file_type": "php",
+        "pattern": "\\?\\s*(true|TRUE)\\s*:\\s*(false|FALSE)"
+    },
+    {
+        "id": "10",
+        "name": "UseReturnTypeDeclarations",
+        "description": "Ensure all functions and methods have a return type declaration.",
+        "file_type": "php",
+        "pattern": "function\\s+([a-zA-Z0-9_]+)\\s*\\([^)]*\\)\\s*\\{"
+    },
+    {
+        "id": "11",
+        "name": "NoVariableFunctions",
+        "description": "Avoid using variable functions (e.g., $funcName()). They can reduce readability and make static analysis difficult.",
+        "file_type": "php",
+        "pattern": "\\$[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\\s*\\("
+    },
+    {
+        "id": "12",
+        "name": "PreferArrowFunctions",
+        "description": "Prefer arrow functions (fn) over verbose anonymous functions for single-expression closures (PHP 7.4+).",
+        "file_type": "php",
+        "pattern": "function\\s*\\([^)]*\\)\\s*use\\s*\\([^)]*\\)\\s*\\{\\s*return\\s+[^;]+;\\s*\\}"
+    },
+    {
+        "id": "13",
+        "name": "PreferFirstClassCallableSyntax",
+        "description": "Use first-class callable syntax (PHP 8.1+) instead of string or array callables for better type safety and IDE support.",
+        "file_type": "php",
+        "pattern": "(?:['\"]\\w+(?:::\\w+)?['\"]|\\['\\w+',\\s*['\"]\\w+['\"]\\])"
+    },
+    {
+        "id": "14",
+        "name": "NoMultipleNamespacesInFile",
+        "description": "Avoid defining multiple namespaces in a single file. Each file should contain only one namespace for clarity and autoloading.",
+        "file_type": "php",
+        "pattern": "(namespace\\s+[A-Za-z0-9_\\\\]+;.*){2,}"
+    },
+    {
+        "id": "15",
+        "name": "NoPhpIniInCodebase",
+        "description": "Avoid committing php.ini files directly into the codebase. These are server configuration files and should be managed separately.",
+        "file_type": "php",
+        "pattern": "php\\.ini"
+    }
+]

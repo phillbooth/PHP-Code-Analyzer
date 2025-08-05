@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "name": "ConsiderReadonlyProperties",
+        "description": "Consider using 'readonly' for properties that are initialized once in the constructor and not modified afterward (PHP 8.1+).",
+        "file_type": "php",
+        "pattern": "public\\s+\\$([a-zA-Z0-9_]+)\\s*;"
+    },
+    {
+        "id": "2",
+        "name": "UseConstructorPropertyPromotion",
+        "description": "Prefer constructor property promotion for cleaner and more concise constructor definitions (PHP 8.0+).",
+        "file_type": "php",
+        "pattern": "public\\s+function\\s+__construct\\s*\\(([^)]+)\\s*\\)\\s*\\{\\s*\\$this->([^;]+)\\s*=\\s*\\$([^;]+);\\s*\\}"
+    },
+    {
+        "id": "3",
+        "name": "PreferMatchExpression",
+        "description": "Consider using the 'match' expression over traditional 'switch' statements for simpler comparisons (PHP 8.0+).",
+        "file_type": "php",
+        "pattern": "\\bswitch\\s*\\(([^)]+)\\)\\s*\\{\\s*(?:case\\s+[^:]+:\\s*return\\s+[^;]+;\\s*)+\\s*default:\\s*return\\s+[^;]+;\\s*\\}"
+    },
+    {
+        "id": "4",
+        "name": "PreferNullsafeOperator",
+        "description": "Use the nullsafe operator (?->) for chained method calls on potentially null objects (PHP 8.0+).",
+        "file_type": "php",
+        "pattern": "if\\s*\\(([^)]+)\\s*&&\\s*\\$[^)]+)\\s*\\)\\s*\\{\\s*return\\s+\\$[^;]+;\\s*\\}"
+    },
+    {
+        "id": "5",
+        "name": "UseUnionTypes",
+        "description": "Prefer using Union Types for parameters and return types where a value can be one of several types (PHP 8.0+).",
+        "file_type": "php",
+        "pattern": "\\/\\*\\*\\s*\\*\\s*@param\\s+(?:\\w+\\|\\w+)\\s+\\$[a-zA-Z0-9_]+\\s*\\*\\/|\\/\\*\\*\\s*\\*\\s*@return\\s+(?:\\w+\\|\\w+)\\s*\\*\\/"
+    },
+    {
+        "id": "6",
+        "name": "PreferEnums",
+        "description": "Consider using Enums instead of class constants or string literals for a fixed set of distinct values (PHP 8.1+).",
+        "file_type": "php",
+        "pattern": "(?:const\\s+[A-Z_]+\\s*=\\s*['\"]\\w+['\"]\\s*;)"
+    }
+]

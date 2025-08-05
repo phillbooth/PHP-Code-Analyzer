@@ -1,0 +1,105 @@
+[
+    {
+        "id": "1",
+        "name": "NoEnvHelperInCode",
+        "description": "Avoid using the env() helper outside of config files. Using it directly can lead to null values in cached configurations, bypassing intended security.",
+        "file_type": "php",
+        "pattern": "\\b(env\\s*\\([\"'])(?!APP_.*|DB_.*|CACHE_.*|MAIL_.*)"
+    },
+    {
+        "id": "2",
+        "name": "NoDieOrExit",
+        "description": "Avoid using die() or exit() directly in application logic. This can prevent proper error handling, logging, and security measures from executing.",
+        "file_type": "php",
+        "pattern": "\\b(die|exit)\\s*\\("
+    },
+    {
+        "id": "3",
+        "name": "NoEval",
+        "description": "Avoid using eval(). It is a major security risk, allowing arbitrary code execution if input is not perfectly controlled.",
+        "file_type": "php",
+        "pattern": "\\beval\\s*\\("
+    },
+    {
+        "id": "4",
+        "name": "UnsafeDeserialization",
+        "description": "Avoid using unserialize() with untrusted input. This can lead to PHP Object Injection vulnerabilities.",
+        "file_type": "php",
+        "pattern": "\\bunserialize\\s*\\("
+    },
+    {
+        "id": "5",
+        "name": "CommandInjectionRisk",
+        "description": "Be cautious with shell_exec(), exec(), system(), passthru(). Ensure input is strictly sanitized to prevent command injection.",
+        "file_type": "php",
+        "pattern": "\\b(shell_exec|exec|system|passthru)\\s*\\("
+    },
+    {
+        "id": "6",
+        "name": "NoDirectSuperglobalAccess",
+        "description": "Avoid direct access to $_GET, $_POST, $_REQUEST, $_FILES without validation/sanitization, especially in raw PHP. Prefer framework-provided request objects.",
+        "file_type": "php",
+        "pattern": "\\b(\\$_(GET|POST|REQUEST|FILES))\\s*\\["
+    },
+    {
+        "id": "7",
+        "name": "NoExecutionOperator",
+        "description": "Avoid using the backtick (`) execution operator. It's a security risk, allowing arbitrary command execution if input is not perfectly controlled.",
+        "file_type": "php",
+        "pattern": "`[^`]*`"
+    },
+    {
+        "id": "8",
+        "name": "ExposedApplicationLogicFile",
+        "description": "Application logic files (e.g., classes, models, controllers, services) should not be directly accessible via a web server. They should be processed by the PHP interpreter.",
+        "file_type": "php",
+        "pattern": "(?:\\/app\\/|\\/src\\/|\\/Classes\\/|\\/Models\\/|\\/Controllers\\/|\\/Services\\/|\\/Traits\\/|\\/Providers\\/|\\/Exceptions\\/|\\/Console\\/)[^\\/]+\\.php"
+    },
+    {
+        "id": "9",
+        "name": "ExposedEnvFile",
+        "description": "The .env file contains sensitive configuration and credentials. It must never be directly accessible via a web server.",
+        "file_type": "any",
+        "pattern": "\\.env$",
+        "match_target": "filename"
+    },
+    {
+        "id": "10",
+        "name": "ExposedConfigFile",
+        "description": "Configuration files like config.php often contain sensitive settings and should not be directly accessible via a web server.",
+        "file_type": "php",
+        "pattern": "config\\.php$",
+        "match_target": "filename"
+    },
+    {
+        "id": "11",
+        "name": "ExposedReadmeTxt",
+        "description": "While not a direct security risk, readme.txt files can sometimes expose unnecessary information about the project or its structure if directly accessible.",
+        "file_type": "txt",
+        "pattern": "readme\\.txt$",
+        "match_target": "filename"
+    },
+    {
+        "id": "12",
+        "name": "NoSpacesInFileOrFolderNames",
+        "description": "Avoid spaces in file and folder names. They can cause issues with URLs, command-line tools, and cross-platform compatibility.",
+        "file_type": "any",
+        "pattern": "\\s",
+        "match_target": "filepath"
+    },
+    {
+        "id": "13",
+        "name": "NoOddCharactersInFileOrFolderNames",
+        "description": "Avoid special characters (e.g., #, ?, &, !, *) in file and folder names. They can cause parsing issues, URL problems, and security risks.",
+        "file_type": "any",
+        "pattern": "[#%&\\?!\\*\\(\\)\\[\\]\\{\\}<>]",
+        "match_target": "filepath"
+    },
+    {
+        "id": "14",
+        "name": "HardcodedCredentials",
+        "description": "Avoid hardcoding sensitive credentials (e.g., database passwords, API keys, usernames) directly in code. Use environment variables or a secure configuration management system.",
+        "file_type": "php",
+        "pattern": "\\$((password|pass|pwd|secret|api_key|token|username|user|host|db_host|db_name|db_user))\\s*=\\s*['\"]([^'\"\\s]+)['\"]"
+    }
+]

@@ -1,0 +1,14 @@
+{
+    "name": "your-vendor/code-reviewer",
+    "description": "A standalone PHP script for static code analysis.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+     "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}

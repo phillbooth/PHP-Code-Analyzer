@@ -1,0 +1,23 @@
+{
+    "name": "php-code-reviewer",
+    "version": "1.0.0",
+    "description": "A standalone Node.js tool to perform static code analysis on PHP files.",
+    "main": "code-reviewer.js",
+    "scripts": {
+        "start": "node code-reviewer.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "php",
+        "code-review",
+        "static-analysis",
+        "nodejs"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "glob": "^10.4.1",
+        "yargs": "^17.7.2"
+    },
+    "type": "module"
+}
