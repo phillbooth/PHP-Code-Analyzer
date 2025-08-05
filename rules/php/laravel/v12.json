@@ -2,22 +2,43 @@
     {
         "id": "1",
         "name": "NoDuplicateLogic",
-        "description": "Update or create logic is duplicated between the controller and the command.",
+        "description": "Update or create logic is duplicated between the controller and the command. Extract to a reusable service.",
         "file_type": "php",
         "pattern": "Conversion::updateOrCreate"
     },
     {
         "id": "2",
         "name": "UsePropertyPromotion",
-        "description": "Use constructor property promotion for a cleaner syntax.",
+        "description": "Use constructor property promotion for a cleaner syntax (PHP 8.0+).",
         "file_type": "php",
-        "pattern": "public\\s+function\\s+__construct\\s*\\(([^)]+)\\s*\\)\\s*\\{([^}]+)\\\\$this->([^;]+);)"
+        "pattern": "public\\\\s+function\\\\s+__construct\\\\s*\\\\(([^)]+)\\\\s*\\\\)\\\\s*\\\\{([^}]+)\\\\$this->([^;]+);)"
     },
     {
         "id": "3",
         "name": "UnnecessaryResourceResponse",
-        "description": "Resource class response is redundant, it will already do this if you return the resource object.",
+        "description": "Resource class response is redundant. Return the resource object directly (e.g., return new MyResource($data);).",
         "file_type": "php",
         "pattern": "->response\\(\\)->setStatusCode\\s*\\("
+    },
+    {
+        "id": "4",
+        "name": "MissingFillableOrGuarded",
+        "description": "Eloquent models should define either $fillable or $guarded to prevent mass assignment vulnerabilities.",
+        "file_type": "php",
+        "pattern": "class\\s+[A-Za-z0-9_]+\\s+extends\\s+Model\\s*\\{[^}]*\\$(?!fillable|guarded)[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]*\\s*=\\s*[^;]+;"
+    },
+    {
+        "id": "5",
+        "name": "NoDebuggingFunctions",
+        "description": "Remove debugging functions like dd() or dump() from production code.",
+        "file_type": "php",
+        "pattern": "\\b(dd|dump)\\s*\\("
+    },
+    {
+        "id": "6",
+        "name": "NoRawDbQueries",
+        "description": "Avoid using DB::raw() or DB::statement() directly with unsanitized input. Prefer Eloquent or Query Builder for safety.",
+        "file_type": "php",
+        "pattern": "\\bDB::(raw|statement)\\s*\\("
     }
 ]
